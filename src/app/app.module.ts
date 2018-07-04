@@ -38,7 +38,7 @@ import {NotaService} from './services/nota.service';
     ModalModule.forRoot(),
     routing
   ],
-  providers: [ConfigService,NotaService],
+  providers: [ConfigService, NotaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

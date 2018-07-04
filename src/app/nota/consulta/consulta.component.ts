@@ -1,71 +1,70 @@
 import { Component, OnInit } from '@angular/core';
- 
+
 import {Router} from '@angular/router';
- 
+
 import {NotaService} from '../../services/nota.service';
- 
+
 import {TbNota} from '../../services/nota';
- 
+
 import {Response} from '../../services/response';
- 
+
 @Component({
     selector: 'app-consulta-nota',
     templateUrl: './consulta.component.html',
-    styleUrls:["./consulta.component.css"]
+    styleUrls: ['./consulta.component.css']
   })
   export class ConsultaComponent implements OnInit {
- 
+
     private notas: TbNota[] = new Array();
-    private titulo:string;
- 
+    private titulo: string;
+
     constructor(private notaService: NotaService,
-                private router: Router){}
- 
+                private router: Router) {}
+
     ngOnInit() {
- 
-      /*SETA O TÍTULO */
-      this.titulo = "Lista de Notas";
- 
-      /*CHAMA O SERVIÇO E RETORNA TODAS AS PESSOAS CADASTRADAS */
+
+      /*SETA O TÃ�TULO */
+      this.titulo = 'Lista de Notas';
+
+      /*CHAMA O SERVIÃ‡O E RETORNA TODAS AS PESSOAS CADASTRADAS */
       this.notaService.getTbNotas().subscribe(res => this.notas = res);
     }
- 
-    /**EXCLUI UM REGISTRO QUANDO CLICAMOS NA OPÇÃO EXCLUIR DE UMA 
+
+    /**EXCLUI UM REGISTRO QUANDO CLICAMOS NA OPÃ‡ÃƒO EXCLUIR DE UMA
      * LINHA DA TABELA*/
-    excluir(idNotas:number, index:number):void {
- 
-      if(confirm("Deseja realmente excluir esse registro?")){
- 
-        /*CHAMA O SERVIÇO PARA REALIZAR A EXCLUSÃO */
+    excluir(idNotas: number, index: number): void {
+
+      if (confirm('Deseja realmente excluir esse registro?')) {
+
+        /*CHAMA O SERVIÃ‡O PARA REALIZAR A EXCLUSÃƒO */
         this.notaService.excluirTbNota(idNotas).subscribe(response => {
- 
-              /**PEGA O RESPONSE DO SERVIÇO */
-              let res:Response = <Response>response;
- 
+
+              /**PEGA O RESPONSE DO SERVIÃ‡O */
+              const res: Response = <Response>response;
+
               /*1 = SUCESSO
-              * MOSTRAMOS A MENSAGEM RETORNADA PELO SERVIÇO E DEPOIS REMOVEMOS
+              * MOSTRAMOS A MENSAGEM RETORNADA PELO SERVIÃ‡O E DEPOIS REMOVEMOS
               O REGISTRO DA TABELA HTML*/
-              if(res.codigo == 1){
+              if (res.codigo === 1) {
                 alert(res.mensagem);
-                this.notas.splice(index,1);
-              }
-              else{
-                /*0 = EXCEPTION GERADA NO SERVIÇO JAVA */
+                this.notas.splice(index, 1);
+              } else {
+                /*0 = EXCEPTION GERADA NO SERVIÃ‡O JAVA */
                 alert(res.mensagem);
               }
           },
-          (erro) => {                    
-               /*MOSTRA ERROS NÃO TRATADOS */
+          (erro) => {
+               /*MOSTRA ERROS NÃƒO TRATADOS */
                alert(erro);
-          });        
+          });
       }
- 
+
     }
- 
-    editar(idNotas:number):void{
- 
-      this.router.navigate(['/cadastro-nota',idNotas]);
- 
+
+    editar(idNotas: number): void {
+
+      this.router.navigate(['/cadastro-nota', idNotas]);
+
     }
- 
+
   }

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
- 
+
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html'
   })
   export class HomeComponent {
-       private mensagem:string = "CADASTRO DE NOTAS"; 
+       private mensagem = 'CADASTRO DE NOTAS';
   }
