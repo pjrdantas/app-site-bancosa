@@ -13,7 +13,7 @@ import {Response} from '../../services/response';
     templateUrl: './consulta.component.html',
     styleUrls: ['./consulta.component.css']
   })
-  export class ConsultaComponent implements OnInit {
+  export class ConsultaNotaComponent implements OnInit {
 
     private notas: TbNota[] = new Array();
     private titulo: string;

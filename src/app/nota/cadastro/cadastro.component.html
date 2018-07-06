@@ -1,4 +1,36 @@
-<form (ngSubmit)="salvar()">
+
+
+<div class="container bg-light">
+	<div class="row">
+		<div class="col-md-9 order-md-1">
+			<form (ngSubmit)="salvar()">
+				<br />
+				<h4 class="mb-3">{{titulo}}</h4>
+				
+					<div class="col-md-4 mb-4">
+						<label for="codigo">Valor</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text">R$</span>
+							</div>
+						  	<input type="text" name="nota" placeholder="Digite o Valor" [(ngModel)]="nota.tbNotasValor" class="form-control"  /> 
+						</div>
+					</div>
+				
+				
+					<div class="col-md-2">
+						<button type="submit" class="btn btn-outline-primary  btn-block" >Salvar</button>
+					</div>
+				
+			</form>
+		</div>
+	</div>
+	<footer class="my-5 pt-5 text-muted text-center text-small">
+		<p class="mb-1">&copy; 2017-2018 Banco S/A</p>
+	</footer>
+</div>
+<!--  
+ <form (ngSubmit)="salvar()">
 
     <br/>
     <h3>{{titulo}}</h3>
@@ -6,8 +38,9 @@
 
 
     <label>Valor da Nota:
-        <input  name="nota" size="20" [(ngModel)]="nota.tbNotasValor" class="form-control form-control-sm"  />
+        <input type="input" name="nota" size="20" [(ngModel)]="nota.tbNotasValor" class="form-control form-control-sm"  />
     </label><br/><br/>
 
     <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 </form>
+-->

@@ -3,24 +3,24 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
-import {NotaService} from '../../services/nota.service';
+import {BancoService} from '../../services/banco.service';
 
-import {TbNota} from '../../services/nota';
+import {TbBanco} from '../../services/banco';
 
 import {Response} from '../../services/response';
 
 import { Observable } from 'rxjs';
 
 @Component({
-    selector: 'app-cadastro-nota',
+    selector: 'app-cadastro-banco',
     templateUrl: './cadastro.component.html'
   })
-  export class CadastroNotaComponent implements OnInit {
+  export class CadastroBancoComponent implements OnInit {
 
     private titulo: string;
-    private nota: TbNota = new TbNota();
+    private banco: TbBanco = new TbBanco();
 
-    constructor(private notaService: NotaService,
+    constructor(private bancoService: BancoService,
                 private router: Router,
                 private activatedRoute: ActivatedRoute) {}
 
@@ -29,13 +29,13 @@ import { Observable } from 'rxjs';
 
       this.activatedRoute.params.subscribe(parametro =>  {
 
-        if (parametro['idNotas'] === undefined) {
+        if (parametro['idBanco'] === undefined) {
 
-          this.titulo = 'Inclusão de valores de Notas';
+          this.titulo = 'Inclusão de Bancos';
         } else {
 
-          this.titulo = 'Editar Valor de Notas';
-          this.notaService.getTbNota(Number(parametro['idNotas'])).subscribe(res => this.nota = res);
+          this.titulo = 'Editar Bancos';
+          this.bancoService.getTbBanco(Number(parametro['idBanco'])).subscribe(res => this.banco = res);
         }
 
 
@@ -46,10 +46,10 @@ import { Observable } from 'rxjs';
     salvar(): void {
 
       /*SE NÃO TIVER CÓDIGO VAMOS INSERIR UM NOVO REGISTRO */
-      if (this.nota.idNotas === undefined) {
+      if (this.banco.idBanco === undefined) {
 
-        /*CHAMA O SERVIÇO PARA ADICIONAR UMA NOVA NOTA */
-        this.notaService.addTbNota(this.nota).subscribe(response => {
+        /*CHAMA O SERVIÇO PARA ADICIONAR UMA NOVA BANCO */
+        this.bancoService.addTbBanco(this.banco).subscribe(response => {
 
            // PEGA O RESPONSE DO RETORNO DO SERVIÇO
            const res: Response = <Response>response;
@@ -58,8 +58,8 @@ import { Observable } from 'rxjs';
            E LIMPAR O FORMULÁRIO PARA INSERIR UM NOVO REGISTRO*/
            if (res.codigo === 1) {
             alert(res.mensagem);
-            this.nota = new TbNota();
-            this.router.navigate(['/consulta-nota']);
+            this.banco = new TbBanco();
+            this.router.navigate(['/consulta-banco']);
            } else {
              /*
              ESSA MENSAGEM VAI SER MOSTRADA CASO OCORRA ALGUMA EXCEPTION
@@ -69,23 +69,23 @@ import { Observable } from 'rxjs';
          },
          (erro) => {
            /**AQUI VAMOS MOSTRAR OS ERROS NÃO TRATADOS
-             EXEMPLO: SE APLICAÇÃO NÃO CONSEGUIR FAZER UMA REQUEST NA API                        */
+             EXEMPLO: SE APLICAÃO NÃO CONSEGUIR FAZER UMA REQUEST NA API                        */
             alert(erro);
          });
 
       } else {
 
         /*AQUI VAMOS ATUALIZAR AS INFORMAÇÕES DE UM REGISTRO EXISTENTE */
-        this.notaService.atualizarTbNota(this.nota).subscribe(response => {
+        this.bancoService.atualizarTbBanco(this.banco).subscribe(response => {
 
-        // PEGA O RESPONSE DO RETORNO DO SERVÇO
+        // PEGA O RESPONSE DO RETORNO DO SERVIÇO
         const res: Response = <Response>response;
 
          /*SE RETORNOU 1 DEVEMOS MOSTRAR A MENSAGEM DE SUCESSO
            E REDIRECIONAR O USUÁRIO PARA A PÁGINA DE CONSULTA*/
         if (res.codigo === 1) {
           alert(res.mensagem);
-          this.router.navigate(['/consulta-nota']);
+          this.router.navigate(['/consulta-banco']);
         } else {
           /*ESSA MENSAGEM VAI SER MOSTRADA CASO OCORRA ALGUMA EXCEPTION
           NO SERVIDOR (CODIGO = 0)*/
@@ -94,7 +94,7 @@ import { Observable } from 'rxjs';
        },
        (erro) => {
          /**AQUI VAMOS MOSTRAR OS ERROS NÃO TRATADOS
-          EXEMPLO: SE APLICAÇÃO NÃO CONSEGUIR FAZER UMA REQUEST NA API                        */
+          EXEMPLO: SE APLICAÇÃO NNÃO CONSEGUIR FAZER UMA REQUEST NA API                        */
           alert(erro);
        });
       }
