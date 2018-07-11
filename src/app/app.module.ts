@@ -13,6 +13,8 @@ import { ConsultaNotaComponent } from './nota/consulta/consulta.component';
 import { CadastroNotaComponent } from './nota/cadastro/cadastro.component';
 import { ConsultaBancoComponent } from './banco/consulta/consulta.component';
 import { CadastroBancoComponent } from './banco/cadastro/cadastro.component';
+import { ConsultaAgenciaComponent } from './agencia/consulta/consulta.component';
+import { CadastroAgenciaComponent } from './agencia/cadastro/cadastro.component';
 
 import {routing} from './../app.routes';
 
@@ -20,6 +22,7 @@ import {routing} from './../app.routes';
 import {ConfigService} from './services/config.service';
 import {NotaService} from './services/nota.service';
 import {BancoService} from './services/banco.service';
+import {AgenciaService} from './services/agencia.service';
 
 
 @NgModule({
@@ -30,7 +33,9 @@ import {BancoService} from './services/banco.service';
     ConsultaNotaComponent,
     CadastroNotaComponent,
     ConsultaBancoComponent,
-    CadastroBancoComponent
+    CadastroBancoComponent,
+    ConsultaAgenciaComponent,
+    CadastroAgenciaComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,7 @@ import {BancoService} from './services/banco.service';
     AppBootstrapModule,
     routing
   ],
-  providers: [ConfigService, NotaService, BancoService],
+  providers: [ConfigService, NotaService, BancoService, AgenciaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

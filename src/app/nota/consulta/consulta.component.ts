@@ -23,38 +23,38 @@ import {Response} from '../../services/response';
 
     ngOnInit() {
 
-      /*SETA O TÃ�TULO */
+      /*SETA O TÍTULO */
       this.titulo = 'Lista de Notas';
 
-      /*CHAMA O SERVIÃ‡O E RETORNA TODAS AS PESSOAS CADASTRADAS */
+      /*CHAMA O SERVIÇO E RETORNA TODAS AS PESSOAS CADASTRADAS */
       this.notaService.getTbNotas().subscribe(res => this.notas = res);
     }
 
-    /**EXCLUI UM REGISTRO QUANDO CLICAMOS NA OPÃ‡ÃƒO EXCLUIR DE UMA
+    /**EXCLUI UM REGISTRO QUANDO CLICAMOS NA OPÇÃO EXCLUIR DE UMA
      * LINHA DA TABELA*/
     excluir(idNotas: number, index: number): void {
 
       if (confirm('Deseja realmente excluir esse registro?')) {
 
-        /*CHAMA O SERVIÃ‡O PARA REALIZAR A EXCLUSÃƒO */
+        /*CHAMA O SERVIÇO PARA REALIZAR A EXCLUSÃO */
         this.notaService.excluirTbNota(idNotas).subscribe(response => {
 
-              /**PEGA O RESPONSE DO SERVIÃ‡O */
+              /**PEGA O RESPONSE DO SERVIÇO */
               const res: Response = <Response>response;
 
               /*1 = SUCESSO
-              * MOSTRAMOS A MENSAGEM RETORNADA PELO SERVIÃ‡O E DEPOIS REMOVEMOS
+              * MOSTRAMOS A MENSAGEM RETORNADA PELO SERVIÇO E DEPOIS REMOVEMOS
               O REGISTRO DA TABELA HTML*/
               if (res.codigo === 1) {
                 alert(res.mensagem);
                 this.notas.splice(index, 1);
               } else {
-                /*0 = EXCEPTION GERADA NO SERVIÃ‡O JAVA */
+                /*0 = EXCEPTION GERADA NO SERVIÇO JAVA */
                 alert(res.mensagem);
               }
           },
           (erro) => {
-               /*MOSTRA ERROS NÃƒO TRATADOS */
+               /*MOSTRA ERROS NÃO TRATADOS */
                alert(erro);
           });
       }

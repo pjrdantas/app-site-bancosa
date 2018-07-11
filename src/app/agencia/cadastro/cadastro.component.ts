@@ -3,8 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
+import {AgenciaService} from '../../services/agencia.service';
 import {BancoService} from '../../services/banco.service';
 
+import {TbAgencia} from '../../services/agencia';
 import {TbBanco} from '../../services/banco';
 
 import {Response} from '../../services/response';
@@ -12,15 +14,19 @@ import {Response} from '../../services/response';
 import { Observable } from 'rxjs';
 
 @Component({
-    selector: 'app-cadastro-banco',
+    selector: 'app-cadastro-agencia',
     templateUrl: './cadastro.component.html'
   })
-  export class CadastroBancoComponent implements OnInit {
+  export class CadastroAgenciaComponent implements OnInit {
 
     private titulo: string;
-    private banco: TbBanco = new TbBanco();
+    private agencia: TbAgencia = new TbAgencia();
+    private bancos: TbBanco[] = new Array();
 
-    constructor(private bancoService: BancoService,
+
+
+    constructor(private agenciaService: AgenciaService,
+                private bancoService: BancoService,
                 private router: Router,
                 private activatedRoute: ActivatedRoute) {}
 
@@ -30,27 +36,35 @@ import { Observable } from 'rxjs';
       this.activatedRoute.params.subscribe(parametro =>  {
 
 
-        if (parametro['idBanco'] === undefined) {
+        if (parametro['idAgencia'] === undefined) {
 
-          this.titulo = 'Inclusão de Bancos';
+          this.titulo = 'Inclusão de Agencias';
+          /*CHAMA O SERVIÇO E RETORNA TODAS OS BANCOS CADASTRADAS */
+          this.bancoService.getTbBancos().subscribe(resp => this.bancos = resp);
         } else {
 
-          this.titulo = 'Editar Bancos';
-          this.bancoService.getTbBanco(Number(parametro['idBanco'])).subscribe(res => this.banco = res);
+          this.titulo = 'Editar Agencias';
+          this.agenciaService.getTbAgencia(Number(parametro['idAgencia'])).subscribe(res => this.agencia = res);
         }
 
 
       });
     }
 
+
     /*FUNÇÃO PARA SALVAR UM NOVO REGISTRO OU ALTERAÇÃO EM UM REGISTRO EXISTENTE */
     salvar(): void {
 
       /*SE NÃO TIVER CÓDIGO VAMOS INSERIR UM NOVO REGISTRO */
-      if (this.banco.idBanco === undefined) {
+      if (this.agencia.idAgencia === undefined) {
 
-        /*CHAMA O SERVIÇO PARA ADICIONAR UMA NOVA BANCO */
-        this.bancoService.addTbBanco(this.banco).subscribe(response => {
+        /*CHAMA O SERVIÇO PARA ADICIONAR UMA NOVA AGENCIA */
+
+
+
+
+        this.agenciaService.addTbAgencia(this.agencia).subscribe(response => {
+
 
            // PEGA O RESPONSE DO RETORNO DO SERVIÇO
            const res: Response = <Response>response;
@@ -59,8 +73,8 @@ import { Observable } from 'rxjs';
            E LIMPAR O FORMULÁRIO PARA INSERIR UM NOVO REGISTRO*/
            if (res.codigo === 1) {
             alert(res.mensagem);
-            this.banco = new TbBanco();
-            this.router.navigate(['/consulta-banco']);
+            this.agencia = new TbAgencia();
+            this.router.navigate(['/consulta-agencia']);
            } else {
              /*
              ESSA MENSAGEM VAI SER MOSTRADA CASO OCORRA ALGUMA EXCEPTION
@@ -77,7 +91,7 @@ import { Observable } from 'rxjs';
       } else {
 
         /*AQUI VAMOS ATUALIZAR AS INFORMAÇÕES DE UM REGISTRO EXISTENTE */
-        this.bancoService.atualizarTbBanco(this.banco).subscribe(response => {
+        this.agenciaService.atualizarTbAgencia(this.agencia).subscribe(response => {
 
         // PEGA O RESPONSE DO RETORNO DO SERVIÇO
         const res: Response = <Response>response;
@@ -86,7 +100,7 @@ import { Observable } from 'rxjs';
            E REDIRECIONAR O USUÁRIO PARA A PÁGINA DE CONSULTA*/
         if (res.codigo === 1) {
           alert(res.mensagem);
-          this.router.navigate(['/consulta-banco']);
+          this.router.navigate(['/consulta-agencia']);
         } else {
           /*ESSA MENSAGEM VAI SER MOSTRADA CASO OCORRA ALGUMA EXCEPTION
           NO SERVIDOR (CODIGO = 0)*/

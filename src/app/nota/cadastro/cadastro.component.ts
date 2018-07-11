@@ -29,6 +29,7 @@ import { Observable } from 'rxjs';
 
       this.activatedRoute.params.subscribe(parametro =>  {
 
+
         if (parametro['idNotas'] === undefined) {
 
           this.titulo = 'Inclusão de valores de Notas';
