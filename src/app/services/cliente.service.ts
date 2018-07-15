@@ -8,11 +8,11 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 
-import {TbAgencia} from '../services/agencia';
+import {TbCliente} from '../services/cliente';
 import {ConfigService} from './config.service';
 
 @Injectable()
-export class AgenciaService {
+export class ClienteService {
 
     private baseUrlService = '';
     private headers: Headers;
@@ -21,43 +21,43 @@ export class AgenciaService {
     constructor(private http: Http,
                 private configService: ConfigService) {
 
-       
-        this.baseUrlService = configService.getUrlService() + '/agencia/';
+ 
+        this.baseUrlService = configService.getUrlService() + '/cliente/';
 
-        
+
         this.headers = new Headers ({ 'Content-Type': 'application/json;charset=UTF-8' });
         this.options = new RequestOptions ({ headers: this.headers });
     }
 
-   
-    getTbAgencias() {
+
+    getTbClientes() {
         return this.http.get(this.baseUrlService).map(res => res.json());
     }
 
- 
-    addTbAgencia(agencia: TbAgencia) {
+  
+    addTbCliente(cliente: TbCliente) {
        
         
-        let foo = { idAgencia: agencia.idAgencia, agenciaCodigo: agencia.agenciaCodigo, agenciaDigito: agencia.agenciaDigito, idbancoAgencia: agencia.idbancoAgencia,  b: function() {} };
+        let foo = { idcliente: cliente.idCliente, clienteNome: cliente.clienteNome, clienteSenha: cliente.clienteSenha, clienteIAgencia: cliente.clienteIAgencia,  b: function() {} };
         
         return this.http.post(this.baseUrlService, JSON.stringify(foo), this.options).map(res => res.json());
     }
     
-    excluirTbAgencia(idAgencia: number) {
+    excluirTbCliente(idcliente: number) {
 
-      return this.http.delete(this.baseUrlService + idAgencia).map(res => res.json());
+      return this.http.delete(this.baseUrlService + idcliente).map(res => res.json());
     }
 
-   
-    getTbAgencia(idAgencia: number) {
+    
+    getTbCliente(idcliente: number) {
 
-        return this.http.get(this.baseUrlService + idAgencia).map(res => res.json());
+        return this.http.get(this.baseUrlService + idcliente).map(res => res.json());
     }
 
-   
-    atualizarTbAgencia(agencia: TbAgencia) {
+ 
+    atualizarTbCliente(cliente: TbCliente) {
 
-        return this.http.put(this.baseUrlService, JSON.stringify(agencia), this.options).map(res => res.json());
+        return this.http.put(this.baseUrlService, JSON.stringify(cliente), this.options).map(res => res.json());
     }
 
 }

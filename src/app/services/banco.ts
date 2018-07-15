@@ -1,7 +1,7 @@
 export class TbBanco {
 
-  idBanco: number;
-  tbBancoCodigo: number;
-  tbBancoNome: string;
+  public idBanco: number;
+  public bancoCodigo: number;
+  public bancoNome: string;
 
 }

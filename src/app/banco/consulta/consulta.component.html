@@ -17,8 +17,8 @@
     <tbody>
         <tr class="d-flex" *ngFor="let banco of bancos; let i = index;">
 
-            <td class="col-sm-1">{{ banco.tbBancoCodigo }}</td>
-            <td class="col-sm-9">{{ banco.tbBancoNome }}</td>
+            <td class="col-sm-1">{{ banco.bancoCodigo }}</td>
+            <td class="col-sm-9">{{ banco.bancoNome }}</td>
 
             <td class="col-sm-1"><a (click)="editar(banco.idBanco);">Editar</a></td>
             <td class="col-sm-1"><a (click)="excluir(banco.idBanco, i);">Excluir</a></td>

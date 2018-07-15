@@ -2,65 +2,65 @@ import { Component, OnInit } from '@angular/core';
 
 import {Router} from '@angular/router';
 
-import {BancoService} from '../../services/banco.service';
+import {ContaService} from '../../services/conta.service';
 
-import {TbBanco} from '../../services/banco';
+import {TbConta} from '../../services/conta';
 
 import {Response} from '../../services/response';
 
 @Component({
-    selector: 'app-consulta-banco',
+    selector: 'app-consulta-conta',
     templateUrl: './consulta.component.html',
     styleUrls: ['./consulta.component.css']
   })
-  export class ConsultaBancoComponent implements OnInit {
+  export class ConsultaContaComponent implements OnInit {
 
-    private bancos: TbBanco[] = new Array();
+    private contas: TbConta[] = new Array();
     private titulo: string;
 
-    constructor(private bancoService: BancoService,
+    constructor(private contaService: ContaService,
                 private router: Router) {}
 
     ngOnInit() {
 
-    
-      this.titulo = 'Lista de Bancos';
-
  
-      this.bancoService.getTbBancos().subscribe(res => this.bancos = res);
+      this.titulo = 'Lista de Contas';
+
+    
+      this.contaService.getTbContas().subscribe(res => this.contas = res);
     }
 
 
-    excluir(idBanco: number, index: number): void {
+    excluir(idConta: number, index: number): void {
 
       if (confirm('Deseja realmente excluir esse registro?')) {
 
      
-        this.bancoService.excluirTbBanco(idBanco).subscribe(response => {
+        this.contaService.excluirTbConta(idConta).subscribe(response => {
 
-          
+            
               const res: Response = <Response>response;
 
-      
+ 
               if (res.codigo === 1) {
                 alert(res.mensagem);
-                this.bancos.splice(index, 1);
+                this.contas.splice(index, 1);
               } else {
-  
+          
                 alert(res.mensagem);
               }
           },
           (erro) => {
-     
+         
                alert(erro);
           });
       }
 
     }
 
-    editar(idBanco: number): void {
+    editar(idConta: number): void {
        
-      this.router.navigate(['/cadastro-banco', idBanco]);
+      this.router.navigate(['/cadastro-conta', idConta]);
 
     }
 

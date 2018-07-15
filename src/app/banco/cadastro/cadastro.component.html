@@ -6,17 +6,11 @@
 				<br />
 				<h4 class="mb-3">{{titulo}}</h4>
 
-				<div class="col-md-4 mb-4">
-					<label for="codigo">Codigo</label> <input type="text"
-						class="form-control" name="tbBancoCodigo"
-						[(ngModel)]="banco.tbBancoCodigo" placeholder="Digite o Codigo"
-						required>
+				<div class="col-md-2 mb-4">
+					<label for="codigo">Codigo</label> <input type="text" class="form-control" name="bancoCodigo" [(ngModel)]="banco.bancoCodigo" placeholder="Digite o Codigo" required>
 				</div>
-				<div class="col-md-9 mb-4">
-					<label for="banco">Nome do Banco</label> <input type="text"
-						class="form-control" name="tbBancoNome"
-						[(ngModel)]="banco.tbBancoNome"
-						placeholder="Digite o Nome do Banco" required>
+				<div class="col-md-7 mb-4">
+					<label for="banco">Nome do Banco</label> <input type="text" class="form-control" name="bancoNome" [(ngModel)]="banco.bancoNome" placeholder="Digite o Nome do Banco" required>
 				</div>
 
 

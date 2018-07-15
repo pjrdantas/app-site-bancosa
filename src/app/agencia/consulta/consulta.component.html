@@ -6,10 +6,9 @@
 
 <table>
     <thead>
-        <tr class="d-flex">
+        <tr class="d-flex">           
             <th class="col-2">Agencia</th>
-            <th class="col-2">Digito</th>
-            <th class="col-2">Banco</th>
+            <th class="col-8">Banco</th>
             <th class="col-1">Editar</th>
             <th class="col-1">Excluir</th>
         </tr>
@@ -17,11 +16,9 @@
 
     <tbody>
         <tr class="d-flex" *ngFor="let agencia of agencias; let i = index;">
-
-            <td class="col-sm-2">{{ agencia.tbAgenciaCodigo }}</td>
-            <td class="col-sm-2">{{ agencia.tbAgenciaDigito }}</td>
-            <td class="col-sm-2">{{ agencia.tbAgenciaidBanco }}</td>
-            
+        
+            <td class="col-sm-2">{{ agencia.agenciaCodigo }}-{{ agencia.agenciaDigito }}</td>
+            <td class="col-sm-8">{{ agencia.bancoCodigo }}-{{ agencia.bancoNome }}</td>
 
             <td class="col-sm-1"><a (click)="editar(agencia.idAgencia);">Editar</a></td>
             <td class="col-sm-1"><a (click)="excluir(agencia.idAgencia, i);">Excluir</a></td>

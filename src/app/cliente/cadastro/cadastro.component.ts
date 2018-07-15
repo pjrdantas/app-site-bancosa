@@ -3,45 +3,45 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 
+import {ClienteService} from '../../services/cliente.service';
 import {AgenciaService} from '../../services/agencia.service';
-import {BancoService} from '../../services/banco.service';
 
+import {TbCliente} from '../../services/cliente';
 import {TbAgencia} from '../../services/agencia';
-import {TbBanco} from '../../services/banco';
 
 import {Response} from '../../services/response';
 
 import {Observable} from 'rxjs';
 
 @Component({
-  selector: 'app-cadastro-agencia',
+  selector: 'app-cadastro-cliente',
   templateUrl: './cadastro.component.html'
 })
-export class CadastroAgenciaComponent implements OnInit {
+export class CadastroClienteComponent implements OnInit {
 
   private titulo: string;
-  private agencia: TbAgencia = new TbAgencia();
-  private bancos: TbBanco[] = new Array();
+  private cliente: TbCliente = new TbCliente();
+  private agencias: TbAgencia[] = new Array();
 
-  constructor(private agenciaService: AgenciaService,
-    private bancoService: BancoService,
+  constructor(private clienteService: ClienteService,
+    private agenciaService: AgenciaService,
     private router: Router,
     private activatedRoute: ActivatedRoute) {}
 
 
   ngOnInit() {
 
-    this.bancoService.getTbBancos().subscribe(resp => this.bancos = resp);
+    this.agenciaService.getTbAgencias().subscribe(resp => this.agencias = resp);
 
     this.activatedRoute.params.subscribe(parametro => {
 
 
-      if (parametro['idAgencia'] === undefined) {
+      if (parametro['idCliente'] === undefined) {
 
-        this.titulo = 'Inclusão de Agencias';
+        this.titulo = 'Inclusão de Clientes';
       } else {
-        this.titulo = 'Editar Agencias';
-        this.agenciaService.getTbAgencia(Number(parametro['idAgencia'])).subscribe(res => this.agencia = res);
+        this.titulo = 'Editar Clientes';
+        this.clienteService.getTbCliente(Number(parametro['idCliente'])).subscribe(res => this.cliente = res);
       }
     });
   }
@@ -50,17 +50,17 @@ export class CadastroAgenciaComponent implements OnInit {
   salvar(): void {
 
 
-    if (this.agencia.idAgencia === undefined) {
+    if (this.cliente.idCliente === undefined) {
 
 
-      this.agenciaService.addTbAgencia(this.agencia).subscribe(response => {
+      this.clienteService.addTbCliente(this.cliente).subscribe(response => {
 
         const res: Response = <Response>response;
 
         if (res.codigo === 1) {
           alert(res.mensagem);
-          this.agencia = new TbAgencia();
-          this.router.navigate(['/consulta-agencia']);
+          this.cliente = new TbCliente();
+          this.router.navigate(['/consulta-cliente']);
         } else {
 
           alert(res.mensagem);
@@ -72,21 +72,21 @@ export class CadastroAgenciaComponent implements OnInit {
 
     } else {
 
-      this.agenciaService.atualizarTbAgencia(this.agencia).subscribe(response => {
+      this.clienteService.atualizarTbCliente(this.cliente).subscribe(response => {
 
         const res: Response = <Response>response;
 
 
         if (res.codigo === 1) {
           alert(res.mensagem);
-          this.router.navigate(['/consulta-agencia']);
+          this.router.navigate(['/consulta-cliente']);
         } else {
 
           alert(res.mensagem);
         }
       },
         (erro) => {
-          
+
           alert(erro);
         });
     }

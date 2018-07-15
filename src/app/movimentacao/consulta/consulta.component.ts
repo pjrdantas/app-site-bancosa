@@ -2,41 +2,41 @@ import { Component, OnInit } from '@angular/core';
 
 import {Router} from '@angular/router';
 
-import {AgenciaService} from '../../services/agencia.service';
+import {MovimentacaoService} from '../../services/movimentacao.service';
 
-import {TbAgencia} from '../../services/agencia';
+import {TbMovimentacao} from '../../services/movimentacao';
 
 import {Response} from '../../services/response';
 
 @Component({
-    selector: 'app-consulta-agencia',
+    selector: 'app-consulta-movimentacao',
     templateUrl: './consulta.component.html',
     styleUrls: ['./consulta.component.css']
   })
-  export class ConsultaAgenciaComponent implements OnInit {
+  export class ConsultaMovimentacaoComponent implements OnInit {
 
-    private agencias: TbAgencia[] = new Array();
+    private movimentacaos: TbMovimentacao[] = new Array();
     private titulo: string;
 
-    constructor(private agenciaService: AgenciaService,
+    constructor(private movimentacaoService: MovimentacaoService,
                 private router: Router) {}
 
     ngOnInit() {
 
  
-      this.titulo = 'Lista de Agencias';
+      this.titulo = 'Lista de Movimentacoes';
 
     
-      this.agenciaService.getTbAgencias().subscribe(res => this.agencias = res);
+      this.movimentacaoService.getTbMovimentacaos().subscribe(res => this.movimentacaos = res);
     }
 
 
-    excluir(idAgencia: number, index: number): void {
+    excluir(idMovimentacao: number, index: number): void {
 
       if (confirm('Deseja realmente excluir esse registro?')) {
 
      
-        this.agenciaService.excluirTbAgencia(idAgencia).subscribe(response => {
+        this.movimentacaoService.excluirTbMovimentacao(idMovimentacao).subscribe(response => {
 
             
               const res: Response = <Response>response;
@@ -44,7 +44,7 @@ import {Response} from '../../services/response';
  
               if (res.codigo === 1) {
                 alert(res.mensagem);
-                this.agencias.splice(index, 1);
+                this.movimentacaos.splice(index, 1);
               } else {
           
                 alert(res.mensagem);
@@ -58,9 +58,9 @@ import {Response} from '../../services/response';
 
     }
 
-    editar(idAgencia: number): void {
+    editar(idMovimentacao: number): void {
        
-      this.router.navigate(['/cadastro-agencia', idAgencia]);
+      this.router.navigate(['/cadastro-movimentacao', idMovimentacao]);
 
     }
 

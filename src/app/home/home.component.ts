@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
     templateUrl: './home.component.html'
   })
   export class HomeComponent {
-       private mensagem = 'BANCO AUTOMATICO 24';
+       private mensagem = 'BANCO AUTOMATICO 24 Horas';
   }

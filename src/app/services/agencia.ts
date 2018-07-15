@@ -1,8 +1,10 @@
-import { TbBanco } from './banco';
 export class TbAgencia {
 
-  idAgencia: number;
-  tbAgenciaCodigo: number;
-  tbAgenciaDigito: string;
-  tbAgenciaidBanco: TbBanco;
+  public idAgencia: number;
+  public agenciaCodigo: number;
+  public agenciaDigito: string;
+  //* BANCO */
+  public idbancoAgencia: number;
+  public bancoCodigo: number;
+  public bancoNome: string;
 }

@@ -31,8 +31,24 @@
                 <a class="nav-link dropdown-toggle btn-outline-primary my-2 my-sm-0" dropdownToggle role="button"  aria-haspopup="true" aria-expanded="false">Clientes<span class="caret"></span></a>
  
                 <ul *dropdownMenu class="dropdown-menu"> <!-- {3} -->
-    				<li><a class="dropdown-item" [routerLink]="['/cadastro-nota']">Cadastros</a></li>
-    				<li><a class="dropdown-item" [routerLink]="['/consulta-nota']">Consultas</a></li>
+    				<li><a class="dropdown-item" [routerLink]="['/cadastro-cliente']">Cadastros</a></li>
+    				<li><a class="dropdown-item" [routerLink]="['/consulta-cliente']">Consultas</a></li>
+                </ul>
+            </li>
+             <li class="dropdown" dropdown> <!-- {1} -->
+                <a class="nav-link dropdown-toggle btn-outline-primary my-2 my-sm-0" dropdownToggle role="button"  aria-haspopup="true" aria-expanded="false">Contas<span class="caret"></span></a>
+ 
+                <ul *dropdownMenu class="dropdown-menu"> <!-- {3} -->
+    				<li><a class="dropdown-item" [routerLink]="['/cadastro-conta']">Cadastros</a></li>
+    				<li><a class="dropdown-item" [routerLink]="['/consulta-conta']">Consultas</a></li>
+                </ul>
+            </li>
+             <li class="dropdown" dropdown> <!-- {1} -->
+                <a class="nav-link dropdown-toggle btn-outline-primary my-2 my-sm-0" dropdownToggle role="button"  aria-haspopup="true" aria-expanded="false">Movimentacao<span class="caret"></span></a>
+ 
+                <ul *dropdownMenu class="dropdown-menu"> <!-- {3} -->
+    				<li><a class="dropdown-item" [routerLink]="['/cadastro-movimentacao']">Cadastros</a></li>
+    				<li><a class="dropdown-item" [routerLink]="['/consulta-movimentacao']">Consultas</a></li>
                 </ul>
             </li>
              <li class="dropdown" dropdown> <!-- {1} -->

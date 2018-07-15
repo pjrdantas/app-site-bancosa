@@ -1,0 +1,30 @@
+
+<div class="bg-light">
+<div class="col-md-12">
+<br />	
+<h4>{{titulo}}</h4>
+
+<table>
+    <thead>
+        <tr class="d-flex">    
+        	       
+            <th class="col-2">Conta</th>       
+            <th class="col-2">Agencia</th>     
+            <th class="col-6">Cliente</th>
+            <th class="col-1">Editar</th>
+            <th class="col-1">Excluir</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr class="d-flex" *ngFor="let conta of contas; let i = index;">
+        	<td class="col-sm-2">{{ conta.contaNumero }}-{{ conta.contaDigito }}</td>    
+        	<td class="col-sm-2">{{ conta.agenciaCodigo }}-{{ conta.agenciaDigito }}</td>                    
+            <td class="col-sm-6">{{ conta.clienteNome }}</td>
+            <td class="col-sm-1"><a (click)="editar(conta.idConta);">Editar</a></td>
+            <td class="col-sm-1"><a (click)="excluir(conta.idConta, i);">Excluir</a></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>

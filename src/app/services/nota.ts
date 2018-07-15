@@ -1,6 +1,6 @@
 export class TbNota {
 
-    idNotas: number;
-    tbNotasValor: number;
+    public idNotas: number;
+    public notasValor: number;
 
 }

@@ -28,6 +28,7 @@ import {Response} from '../../services/response';
 
       /*CHAMA O SERVIÇO E RETORNA TODAS AS PESSOAS CADASTRADAS */
       this.notaService.getTbNotas().subscribe(res => this.notas = res);
+
     }
 
     /**EXCLUI UM REGISTRO QUANDO CLICAMOS NA OPÇÃO EXCLUIR DE UMA
