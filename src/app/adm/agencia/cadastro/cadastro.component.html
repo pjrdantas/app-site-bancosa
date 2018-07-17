@@ -1,0 +1,46 @@
+
+<div class="container bg-light">
+	<div class="row">
+		<div class="col-md-12 order-md-1">
+			<form (ngSubmit)="salvar()">
+				<br />
+				<h4 class="mb-3">{{titulo}}</h4>
+
+				<div class="row">
+					<div class="col-md-3 mb-4">
+						<label for="idbancoAgencia">Banco</label> <select
+							class="custom-select d-block w-100" id="idbancoAgencia"
+							[(ngModel)]="agencia.idbancoAgencia"
+							[ngModelOptions]="{standalone: true}" required>
+							<option selected="selected">Selecione...</option>
+							<option *ngFor="let banco of bancos" [value]="banco.idBanco">{{banco.bancoNome}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2 mb-4">
+						<label for="agenciaCodigo">Agencia</label> <input type="text"
+							class="form-control" name="agenciaCodigo"
+							[(ngModel)]="agencia.agenciaCodigo" placeholder="Codigo" required>
+					</div>
+					<div class="col-md-1 mb-4">
+						<label for="agenciaDigito">Digito</label> <input type="text"
+							class="form-control" name="agenciaDigito"
+							[(ngModel)]="agencia.agenciaDigito" placeholder="Digito" required>
+					</div>
+				</div>
+				<br />
+				<br />
+				<hr class="mb-4">
+				<div class="row">
+					<div class="col-md-2">
+						<button type="submit" class="btn btn-outline-primary  btn-block">Salvar</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<footer class="my-5 pt-5 text-muted text-center text-small">
+		<p class="mb-1">&copy; 2017-2018 Banco S/A</p>
+	</footer>
+</div>

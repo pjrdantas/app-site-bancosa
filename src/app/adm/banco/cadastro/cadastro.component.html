@@ -1,0 +1,34 @@
+
+<div class="container bg-light">
+	<div class="row">
+		<div class="col-md-12 order-md-1">
+			<form (ngSubmit)="salvar()">
+				<br />
+				<h4 class="mb-3">{{titulo}}</h4>
+
+				<div class="col-md-2 mb-4">
+					<label for="codigo">Codigo</label> <input type="text"
+						class="form-control" name="bancoCodigo"
+						[(ngModel)]="banco.bancoCodigo" placeholder="Digite o Codigo"
+						required>
+				</div>
+				<div class="col-md-7 mb-4">
+					<label for="banco">Nome do Banco</label> <input type="text"
+						class="form-control" name="bancoNome"
+						[(ngModel)]="banco.bancoNome" placeholder="Digite o Nome do Banco"
+						required>
+				</div>
+				<br />
+				<br />
+				<hr class="mb-4">
+				<div class="col-md-2">
+					<button type="submit" class="btn btn-outline-primary  btn-block">Salvar</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	<footer class="my-5 pt-5 text-muted text-center text-small">
+		<p class="mb-1">&copy; 2017-2018 Banco S/A</p>
+	</footer>
+</div>

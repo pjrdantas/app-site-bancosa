@@ -4,6 +4,7 @@ export class TbMovimentacao {
   public movimentacaoCredito: number;
   public movimentacaoData: string;
   public movimentacaoDebito: number;
+  public movimentacaoSaldo: number;
   //* CONTA */
   public movimentacaoIdConta: number;
   public contaNumero: number;

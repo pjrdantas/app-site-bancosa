@@ -1,0 +1,29 @@
+<div class="container bg-light">
+	<div class="row">
+		<div class="col-md-9 order-md-1">
+			<form (ngSubmit)="salvar()">
+				<br />
+				<h4 class="mb-3">{{titulo}}</h4>
+
+				<div class="col-md-5 mb-4">
+					<label for="codigo">Valor</label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text">R$</span>
+						</div>
+						<input type="text" name="nota" placeholder="Digite o Valor"
+							[(ngModel)]="nota.notasValor" class="form-control" />
+					</div>
+				</div>
+				<br /> <br />
+				<hr class="mb-4">
+				<div class="col-md-2">
+					<button type="submit" class="btn btn-outline-primary  btn-block">Salvar</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<footer class="my-5 pt-5 text-muted text-center text-small">
+		<p class="mb-1">&copy; 2017-2018 Banco S/A</p>
+	</footer>
+</div>

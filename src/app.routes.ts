@@ -2,23 +2,25 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
-import { ConsultaNotaComponent } from './app/nota/consulta/consulta.component';
-import { CadastroNotaComponent } from './app/nota/cadastro/cadastro.component';
+import { ConsultaNotaComponent } from './app/adm/nota/consulta/consulta.component';
+import { CadastroNotaComponent } from './app/adm/nota/cadastro/cadastro.component';
 
-import { ConsultaBancoComponent } from './app/banco/consulta/consulta.component';
-import { CadastroBancoComponent } from './app/banco/cadastro/cadastro.component';
+import { ConsultaBancoComponent } from './app/adm/banco/consulta/consulta.component';
+import { CadastroBancoComponent } from './app/adm/banco/cadastro/cadastro.component';
 
-import { ConsultaAgenciaComponent } from './app/agencia/consulta/consulta.component';
-import { CadastroAgenciaComponent } from './app/agencia/cadastro/cadastro.component';
+import { ConsultaAgenciaComponent } from './app/adm/agencia/consulta/consulta.component';
+import { CadastroAgenciaComponent } from './app/adm/agencia/cadastro/cadastro.component';
 
-import { ConsultaClienteComponent } from './app/cliente/consulta/consulta.component';
-import { CadastroClienteComponent } from './app/cliente/cadastro/cadastro.component';
+import { ConsultaClienteComponent } from './app/adm/cliente/consulta/consulta.component';
+import { CadastroClienteComponent } from './app/adm/cliente/cadastro/cadastro.component';
 
-import { ConsultaContaComponent } from './app/conta/consulta/consulta.component';
-import { CadastroContaComponent } from './app/conta/cadastro/cadastro.component';
+import { ConsultaContaComponent } from './app/adm/conta/consulta/consulta.component';
+import { CadastroContaComponent } from './app/adm/conta/cadastro/cadastro.component';
 
-import { ConsultaMovimentacaoComponent } from './app/movimentacao/consulta/consulta.component';
-import { CadastroMovimentacaoComponent } from './app/movimentacao/cadastro/cadastro.component';
+import { ConsultaMovimentacaoComponent } from './app/adm/movimentacao/consulta/consulta.component';
+import { IncluirCMovimentacaoComponent } from './app/adm/movimentacao/incluirCredito/incluirc.component';
+import { IncluirDMovimentacaoComponent } from './app/adm/movimentacao/incluirDebito/incluird.component';
+
 
 import { HomeComponent } from './app/home/home.component';
 
@@ -46,9 +48,10 @@ const appRoutes: Routes = [
     { path: 'cadastro-conta',              component: CadastroContaComponent },
     { path: 'cadastro-conta/:idConta',     component: CadastroContaComponent },
            
-    { path: 'consulta-movimentacao',                 component: ConsultaMovimentacaoComponent },
-    { path: 'cadastro-movimentacao',                 component: CadastroMovimentacaoComponent },
-    { path: 'cadastro-movimentacao/:idMovimentacao', component: CadastroMovimentacaoComponent }
+    { path: 'consulta-movimentacao',       component: ConsultaMovimentacaoComponent },
+    { path: 'incluirc-movimentacao',       component: IncluirCMovimentacaoComponent },
+    { path: 'incluird-movimentacao',       component: IncluirDMovimentacaoComponent }
+   
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

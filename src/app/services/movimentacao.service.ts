@@ -37,17 +37,11 @@ export class MovimentacaoService {
 
   addTbMovimentacao(movimentacao: TbMovimentacao) {
 
-
     let foo = {idMovimentacao: movimentacao.idMovimentacao, movimentacaoCredito: movimentacao.movimentacaoCredito, 
       movimentacaoData: movimentacao.movimentacaoData, movimentacaoDebito: movimentacao.movimentacaoDebito, 
       movimentacaoIdConta: movimentacao.movimentacaoIdConta, b: function() {}};
 
     return this.http.post(this.baseUrlService, JSON.stringify(foo), this.options).map(res => res.json());
-  }
-
-  excluirTbMovimentacao(idMovimentacao: number) {
-
-    return this.http.delete(this.baseUrlService + idMovimentacao).map(res => res.json());
   }
 
 
@@ -57,9 +51,5 @@ export class MovimentacaoService {
   }
 
 
-  atualizarTbMovimentacao(movimentacao: TbMovimentacao) {
-
-    return this.http.put(this.baseUrlService, JSON.stringify(movimentacao), this.options).map(res => res.json());
-  }
 
 }

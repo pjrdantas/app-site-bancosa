@@ -1,0 +1,33 @@
+
+<div class="bg-light">
+<div class="col-md-12">
+<br />	
+<h4>{{titulo}}</h4>
+
+<table>
+    <thead>
+        <tr class="d-flex">           
+            <th class="col-2">Conta</th>
+            <th class="col-4">Data</th> 
+            <th class="col-2">Credito</th>
+            <th class="col-2">Debito</th>
+            <th class="col-1">Editar</th>
+            <th class="col-1">Excluir</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr class="d-flex" *ngFor="let movimentacao of movimentacaos;">
+ 
+        	<td class="col-sm-2">{{ movimentacao.contaNumero }}-{{ movimentacao.contaDigito }}</td>
+            <td class="col-sm-4">{{ movimentacao.movimentacaoData  }}</td>
+            <td class="col-sm-2">{{ movimentacao.movimentacaoCredito }}</td>
+            <td class="col-sm-2">{{ movimentacao.movimentacaoDebito }}</td>
+            <td class="col-sm-2">{{ movimentacao.movimentacaoSaldo }}</td>
+
+            
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
