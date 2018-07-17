@@ -6,17 +6,20 @@
 				<br />
 				<h4 class="mb-3">{{titulo}}</h4>
 
-				<div class="col-md-2 mb-4">
-					<label for="movimentacaoCredito">Credito</label> <input type="text"
+				<div class="col-md-5 mb-4">
+					<label for="movimentacaoCredito">Credito</label> 
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text">R$</span>
+						</div>
+						<input type="text"
 						class="form-control" name="movimentacaoCredito"
 						[(ngModel)]="movimentacao.movimentacaoCredito"
-						placeholder="Credito" required>
-				</div>
-				<div class="col-md-2 mb-4">
-					<label for="movimentacaoDebito">Debito</label> <input type="text"
-						class="form-control" name="movimentacaoDebito"
-						[(ngModel)]="movimentacao.movimentacaoDebito" placeholder="Debito"
-						required>
+						placeholder="Digite o Valor" required>
+						<div class="input-group-prepend">
+							<span class="input-group-text">,00</span>
+						</div>
+						</div>
 				</div>
 				<div class="col-md-2 mb-4">
 					<label for="idbancoMovimentacao">Conta</label> <select
@@ -27,16 +30,17 @@
 						<option *ngFor="let conta of contas" [value]="conta.idConta">{{conta.contaNumero}}-{{conta.contaDigito}}</option>
 					</select>
 				</div>
-
-				<hr class="mb-4">
-				<div class="col-md-2">
+				<br />
+				<br />
+				<hr class="mb-2">
+				<div class="col-md-3">
 					<button type="submit" class="btn btn-outline-primary  btn-block">Salvar</button>
 				</div>
 
 			</form>
 		</div>
 	</div>
-	<footer class="my-5 pt-5 text-muted text-center text-small">
+	<footer class="my-1 pt-5 text-muted text-center text-small">
 		<p class="mb-1">&copy; 2017-2018 Banco S/A</p>
 	</footer>
 </div>
