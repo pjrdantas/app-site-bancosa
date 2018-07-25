@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md bg-primary navbar-dark mb-4">
-	<a class="navbar-brand" href="#">Seu Banco S/A</a>
+<nav class="navbar navbar-expand-md bg-primary navbar-dark text-light fixed-top">
+	<a class="navbar-brand">Bancos S/A</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarCollapse" aria-controls="navbarCollapse"
 		aria-expanded="false" aria-label="Toggle navigation">
@@ -7,11 +7,11 @@
 	</button>
 	
 	<div class="collapse navbar-collapse" id="navbarCollapse">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a></li>
+		<ul class="navbar-nav mr-auto">			
 		</ul>
 		<form class="form-inline mt-2 mt-md-0">
-			<button class="btn btn-secondary my-2 my-sm-0" type="submit">Sair</button>
+			<button class="btn btn-secondary mr-sm-2 my-sm-0" type=button [routerLink]="['/loginClie']">Login</button>
+			<button class="btn btn-secondary mr-sm-2 my-sm-0" type=button [routerLink]="['/home']">Sair</button>
 		</form>
 	</div>
 </nav>

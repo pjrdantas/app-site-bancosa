@@ -15,6 +15,7 @@ import {ConfigService} from './config.service';
 export class ClienteService {
 
     private baseUrlService = '';
+
     private headers: Headers;
     private options: RequestOptions;
 
@@ -23,6 +24,7 @@ export class ClienteService {
 
  
         this.baseUrlService = configService.getUrlService() + '/cliente/';
+       
 
 
         this.headers = new Headers ({ 'Content-Type': 'application/json;charset=UTF-8' });
@@ -38,7 +40,7 @@ export class ClienteService {
     addTbCliente(cliente: TbCliente) {
        
         
-        let foo = { idcliente: cliente.idCliente, clienteNome: cliente.clienteNome, clienteSenha: cliente.clienteSenha, clienteIAgencia: cliente.clienteIAgencia,  b: function() {} };
+        let foo = { idcliente: cliente.idCliente, clienteNome: cliente.clienteNome, clienteIAgencia: cliente.clienteIAgencia,  b: function() {} };
         
         return this.http.post(this.baseUrlService, JSON.stringify(foo), this.options).map(res => res.json());
     }
@@ -53,6 +55,8 @@ export class ClienteService {
 
         return this.http.get(this.baseUrlService + idcliente).map(res => res.json());
     }
+
+    
 
  
     atualizarTbCliente(cliente: TbCliente) {

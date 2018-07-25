@@ -1,6 +1,6 @@
 <nav
 	class="navbar navbar-expand-md bg-primary navbar-dark text-light fixed-top">
-	<a class="navbar-brand">Bancos S/A - Conta Corrente: Depósito</a>
+	<a class="navbar-brand">Bancos S/A - Conta Corrente</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarCollapse" aria-controls="navbarCollapse"
 		aria-expanded="false" aria-label="Toggle navigation">
@@ -22,39 +22,27 @@
 		<div class="col-md-12">
 			
 			<form>
-
 				<div class="row">
 					<div class="col-md-6">
 						<label><span>Ag.:{{conta.agenciaCodigo}}.{{conta.agenciaDigito}}
-								- C/C:{{conta.contaNumero}}.{{conta.contaDigito}} -
-								{{conta.clienteNome}}</span></label>
+								- C/C:{{conta.contaNumero}}.{{conta.contaDigito}} - {{conta.clienteNome}}</span></label>
 					</div>
 				</div>
-				<br /> <br /> <br /> <br />
+				<br />
 				<div class="row">
 					<div class="col-md-4">
-						<div class="input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text">R$</span>
-							</div>
-							<input type="text" name="nota" class="form-control"
-								[(ngModel)]="movimentacao.movimentacaoCredito"
-								placeholder="Digite o Valor" required>
-							<div class="input-group-prepend">
-								<span class="input-group-text">,00</span>
-							</div>
-						</div>
+						<button class="btn btn-primary btn-lg btn-block" type="submit"
+							(click)="deposito(conta.idConta);">DEPÓSITO</button>
 					</div>
-					<div class="col-md-2">
-						<button class="btn btn-success  btn-block" type="submit"
-						(click)="salvar(conta.idConta);">CONFIRMA</button>
+					<div class="col-md-4">
+						<button class="btn btn-primary btn-lg btn-block" type="submit"
+							(click)="saque(conta.idConta);">SAQUE</button>
 					</div>
-					<div class="col-md-2">
-						<button class="btn btn-secondary  btn-block" type="submit"
-						(click)="retornar(conta.contaIdCliente);">RETORNAR</button>
+					<div class="col-md-4">
+						<button class="btn btn-primary btn-lg btn-block" type="submit"
+						     (click)="extrato(conta.idConta);">EXTRATO</button>
 					</div>
 				</div>
-
 			</form>
 		</div>
 	</div>
@@ -64,4 +52,3 @@
 		<p class="mb-1">&copy; 2017-2018 Banco S/A</p>
 	</footer>
 </div>
-

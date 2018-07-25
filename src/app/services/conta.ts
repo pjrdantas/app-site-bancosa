@@ -3,7 +3,6 @@ export class TbConta {
   public idConta: number;
   public contaDigito: number;
   public contaNumero: string;
-  public contaTipo: number;
   //* AGENCIA */
   public contaIdAgencia: number;
   public agenciaCodigo: number;

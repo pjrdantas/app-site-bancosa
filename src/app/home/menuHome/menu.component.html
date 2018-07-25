@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-	<a class="navbar-brand" href="#">Bancos S/A</a>
+	<a class="navbar-brand" [routerLink]="['/home']">Bancos S/A</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -8,8 +8,8 @@
 		<ul class="navbar-nav mr-auto">
 		</ul>
 		<form class="form-inline mt-2 mt-md-0">
-			<button class="btn btn-secondary mr-sm-2 my-sm-0" type="submit">Administrativo</button>
-			<button class="btn btn-secondary my-2 my-sm-0" type="submit">Cliente</button>
+			<button class="btn btn-secondary mr-sm-2 my-sm-0" type=button [routerLink]="['/banco-menuAdm']">Administrativo</button>
+			<button class="btn btn-secondary mr-sm-2 my-sm-0" type=button [routerLink]="['/banco-menuClie']">Cliente</button>
 		</form>
 	</div>
 </nav>

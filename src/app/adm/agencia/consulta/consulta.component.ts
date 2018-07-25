@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 
 import {AgenciaService} from '../../../services/agencia.service';
-
 import {TbAgencia} from '../../../services/agencia';
 
 import {Response} from '../../../services/response';

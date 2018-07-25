@@ -1,5 +1,5 @@
  <nav class="navbar navbar-expand-md bg-secondary bg-dark text-light fixed-top">
-      <a class="navbar-brand" [routerLink]="['/home']">Banco S.A.</a>
+      <a class="navbar-brand" [routerLink]="['/home']">Bancos S.A.</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -39,27 +39,9 @@
     				<li><a class="dropdown-item" [routerLink]="['/consulta-conta']">Consultas</a></li>
                 </ul>
             </li>
-             <li class="dropdown" dropdown> <!-- {1} -->
-                <a class="nav-link dropdown-toggle btn-outline-primary my-2 my-sm-0" dropdownToggle role="button"  aria-haspopup="true" aria-expanded="false">Movimentações<span class="caret"></span></a>
- 
-                <ul *dropdownMenu class="dropdown-menu"> <!-- {3} -->
-    				<li><a class="dropdown-item" [routerLink]="['/incluirc-movimentacao']">Credito</a></li>
-    				<li><a class="dropdown-item" [routerLink]="['/incluird-movimentacao']">Débito</a></li>
-    				<li><a class="dropdown-item" [routerLink]="['/consulta-movimentacao']">Consultas</a></li>
-                </ul>
-            </li>
-             <li class="dropdown" dropdown> <!-- {1} -->
-                <a class="nav-link dropdown-toggle btn-outline-primary my-2 my-sm-0" dropdownToggle role="button"  aria-haspopup="true" aria-expanded="false">Notas<span class="caret"></span></a>
- 
-                <ul *dropdownMenu class="dropdown-menu"> <!-- {3} -->
-    				<li><a class="dropdown-item" [routerLink]="['/cadastro-nota']">Cadastros</a></li>
-    				<li><a class="dropdown-item" [routerLink]="['/consulta-nota']">Consultas</a></li>
-                </ul>
-            </li>
-       
         </ul>
         <form class="form-inline mt-2 mt-md-0">
-			<button class="btn btn-secondary my-2 my-sm-0" type="submit">Sair</button>
+			<button class="btn btn-secondary my-2 my-sm-0" type="submit" [routerLink]="['/home']">Sair</button>
 		</form>
       </div>
     </nav>

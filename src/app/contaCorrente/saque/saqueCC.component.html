@@ -1,65 +1,121 @@
-
+<nav class="navbar navbar-expand-md bg-primary navbar-dark text-light fixed-top">
+	<a class="navbar-brand">Bancos S/A - Conta Corrente: SAQUE</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarCollapse" aria-controls="navbarCollapse"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	
+	<div class="collapse navbar-collapse" id="navbarCollapse">
+		<ul class="navbar-nav mr-auto">			
+		</ul>
+		<form class="form-inline mt-2 mt-md-0">
+			<button class="btn btn-secondary mr-sm-2 my-sm-0" type=button [routerLink]="['/home']">Sair</button>
+		</form>
+	</div>
+</nav>
 <div class="container bg-light">
-	<br /> <br />
+	
 	<div class="row">
 
 		<div class="col-md-12">
-			<h4>Conta Corrente: SAQUE</h4>
+			
 			<form>
 				<div class="row">
 					<div class="col-md-6">
-						<label>Ag. 0641 C/C: 01.053383.8</label>
+						<label><span>Ag.:{{conta.agenciaCodigo}}.{{conta.agenciaDigito}}
+								- C/C:{{conta.contaNumero}}.{{conta.contaDigito}} -
+								{{conta.clienteNome}}</span></label>
 					</div>
 				</div>
-				<br /> <br /> <br /> <br />
+				
 				<div class="row">
-					<div class="col-md-4">
-						<button class="btn btn-primary btn-lg btn-block" type="submit">R$
-							10,00</button>
+					<div class="col-md-2">
 					</div>
 					<div class="col-md-4">
-						<button class="btn btn-primary btn-lg btn-block" type="submit">R$
-							20,00</button>
+						<button class="btn btn-primary btn-lg btn-block" type="submit" (click)="sacar10(conta.idConta);">R$ 10,00</button>
+					</div>
+					<div class="col-md-4">
+						<button class="btn btn-primary btn-lg btn-block" type="submit" (click)="sacar20(conta.idConta);">R$ 20,00</button>
 					</div>
 				</div>
 				<br />
 				<div class="row">
-					<div class="col-md-4">
-						<button class="btn btn-primary btn-lg btn-block" type="submit">R$
-							50,00</button>
+					<div class="col-md-2">
 					</div>
 					<div class="col-md-4">
-						<button class="btn btn-primary btn-lg btn-block" type="submit">R$
-							100,00</button>
+						<button class="btn btn-primary btn-lg btn-block" type="submit" (click)="sacar50(conta.idConta);">R$ 50,00</button>
+					</div>
+					<div class="col-md-4">
+						<button class="btn btn-primary btn-lg btn-block" type="submit" (click)="sacar100(conta.idConta);">R$ 100,00</button>
+					</div>
+				</div>
+				<br />
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-4">
+						<button class="btn btn-primary btn-lg btn-block" type="submit" (click)="sacar150(conta.idConta);">R$ 150,00</button>
+					</div>
+					<div class="col-md-4">
+						<button class="btn btn-primary btn-lg btn-block" type="submit" (click)="sacar200(conta.idConta);">R$ 200,00</button>
+					</div>
+				</div>
+				<br />
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-4">
+						<button class="btn btn-primary btn-lg btn-block" type="submit" (click)="sacar300(conta.idConta);">R$ 300,00</button>
+					</div>
+					<div class="col-md-4">
+						<button class="btn btn-primary btn-lg btn-block" type="submit" (click)="sacar400(conta.idConta);">R$ 400,00</button>
+					</div>
+				</div>
+				<br />
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-4">
+						<button class="btn btn-primary btn-lg btn-block" type="submit" (click)="sacar500(conta.idConta);">R$ 500,00</button>
+					</div>
+					<div class="col-md-4">
+						<button class="btn btn-primary btn-lg btn-block" type="submit" (click)="sacar1000(conta.idConta);">R$ 1000,00</button>
 					</div>
 				</div>
 
 				<br />
 				<div class="row">
+					<div class="col-md-2">
+					</div>
 					<div class="col-md-4">
 						<div class="input-group">
 							<div class="input-group-prepend">
 								<span class="input-group-text">R$</span>
 							</div>
-							<input type="text" name="nota" placeholder="Digite o Valor" class="form-control" />
+							<input type="text" name="nota" class="form-control"
+								[(ngModel)]="movimentacao.movimentacaoDebito"
+								placeholder="Digite o Valor" required>
 							<div class="input-group-prepend">
 								<span class="input-group-text">,00</span>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<button class="btn btn-success  btn-block" type="submit">CONFIRMA</button>
+						<button class="btn btn-success  btn-block" type="submit" 
+						(click)="salvar(conta.idConta);">CONFIRMA</button>
 					</div>
 					<div class="col-md-2">
-						<button class="btn btn-secondary  btn-block" type="submit">CANCELAR</button>
+						<button class="btn btn-secondary  btn-block" type="submit" 
+						(click)="retornar(conta.contaIdCliente);">RETORNAR</button>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 
-	<footer class="my-5 pt-5 text-muted text-center text-small">
-		<hr class="mb-3">
+	<footer class="my-2 pt-2 text-muted text-center text-small">
+		<hr class="mb-1">
 		<p class="mb-1">&copy; 2017-2018 Banco S/A</p>
 	</footer>
 </div>

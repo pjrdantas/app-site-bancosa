@@ -1,4 +1,50 @@
+ <nav class="navbar navbar-expand-md bg-secondary bg-dark text-light fixed-top">
+      <a class="navbar-brand" [routerLink]="['/home']">Banco S.A.</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+              
+            <li class="dropdown" dropdown> <!-- {1} -->
+                <a class="nav-link dropdown-toggle btn-outline-primary my-2 my-sm-0" dropdownToggle role="button"  aria-haspopup="true" aria-expanded="false">Bancos<span class="caret"></span></a>
+ 
+                <ul *dropdownMenu class="dropdown-menu"> <!-- {3} -->
+    				<li><a class="dropdown-item" [routerLink]="['/cadastro-banco']">Cadastros</a></li>
+    				<li><a class="dropdown-item" [routerLink]="['/consulta-banco']">Consultas</a></li>
+                </ul>
+            </li>
+             <li class="dropdown" dropdown> <!-- {1} -->
+                <a class="nav-link dropdown-toggle btn-outline-primary my-2 my-sm-0" dropdownToggle role="button"  aria-haspopup="true" aria-expanded="false">Agencias<span class="caret"></span></a>
+ 
+                <ul *dropdownMenu class="dropdown-menu"> <!-- {3} -->
+    				<li><a class="dropdown-item" [routerLink]="['/cadastro-agencia']">Cadastros</a></li>
+    				<li><a class="dropdown-item" [routerLink]="['/consulta-agencia']">Consultas</a></li>
+                </ul>
+            </li>
+             <li class="dropdown" dropdown> <!-- {1} -->
+                <a class="nav-link dropdown-toggle btn-outline-primary my-2 my-sm-0" dropdownToggle role="button"  aria-haspopup="true" aria-expanded="false">Clientes<span class="caret"></span></a>
+ 
+                <ul *dropdownMenu class="dropdown-menu"> <!-- {3} -->
+    				<li><a class="dropdown-item" [routerLink]="['/cadastro-cliente']">Cadastros</a></li>
+    				<li><a class="dropdown-item" [routerLink]="['/consulta-cliente']">Consultas</a></li>
+                </ul>
+            </li>
+             <li class="dropdown" dropdown> <!-- {1} -->
+                <a class="nav-link dropdown-toggle btn-outline-primary my-2 my-sm-0" dropdownToggle role="button"  aria-haspopup="true" aria-expanded="false">Contas<span class="caret"></span></a>
+ 
+                <ul *dropdownMenu class="dropdown-menu"> <!-- {3} -->
+    				<li><a class="dropdown-item" [routerLink]="['/cadastro-conta']">Cadastros</a></li>
+    				<li><a class="dropdown-item" [routerLink]="['/consulta-conta']">Consultas</a></li>
+                </ul>
+            </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+			<button class="btn btn-secondary my-2 my-sm-0" type="submit" [routerLink]="['/home']">Sair</button>
+		</form>
+      </div>
+    </nav>
 <div class="bg-light">
 <div class="col-md-12">
 <br />	
@@ -7,8 +53,8 @@
 <table>
     <thead>
         <tr class="d-flex">
-            <th class="col-3">Cliente</th>  
-            <th class="col-1">Senha</th>       
+            <th class="col-4">Cliente</th>  
+     
             <th class="col-6">Agencia</th>
             
            
@@ -19,8 +65,8 @@
 
     <tbody>
         <tr class="d-flex" *ngFor="let cliente of clientes; let i = index;">
-            <td class="col-sm-3">{{ cliente.clienteNome }}</td>
-            <td class="col-sm-1">{{ cliente.clienteSenha }}</td>
+            <td class="col-sm-4">{{ cliente.clienteNome }}</td>
+           
             <td class="col-sm-6">{{ cliente.agenciaCodigo }}-{{ cliente.agenciaDigito }}</td>
             
 

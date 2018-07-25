@@ -15,6 +15,7 @@ import {ConfigService} from './config.service';
 export class ContaService {
 
     private baseUrlService = '';
+    private baseUrlServiceC = '';
     private headers: Headers;
     private options: RequestOptions;
 
@@ -23,6 +24,7 @@ export class ContaService {
 
        
         this.baseUrlService = configService.getUrlService() + '/conta/';
+        this.baseUrlServiceC = configService.getUrlService() + '/contaCliente/';
 
         
         this.headers = new Headers ({ 'Content-Type': 'application/json;charset=UTF-8' });
@@ -49,6 +51,11 @@ export class ContaService {
     }
 
    
+    getTbContaCliente(contaIdCliente: number) {
+
+        return this.http.get(this.baseUrlServiceC + contaIdCliente).map(res => res.json());
+    }
+
     getTbConta(idConta: number) {
 
         return this.http.get(this.baseUrlService + idConta).map(res => res.json());
